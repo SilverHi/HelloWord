@@ -1,0 +1,17 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    name: mysql
+    driver-class-name: com.mysql.jdbc.Driver
+    #基本属性
+    url: jdbc:mysql://127.0.0.1:3306/helloword?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+    username: root
+    password: 123456
+    dbcp2:
+      min-idle: 5                                # 数据库连接池的最小维持连接数
+      initial-size: 5                            # 初始化连接数
+      max-total: 5                               # 最大连接数
+      max-wait-millis: 150
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
