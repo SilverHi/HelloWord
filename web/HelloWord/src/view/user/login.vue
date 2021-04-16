@@ -5,7 +5,9 @@
     </el-row>
     <el-row>
       <el-col :span="12" :offset="6" >
-        <i class ="el-iconzhanghao iconfont" style="color: #FC703E;" ></i>
+        <svg class = "icon" aria-hidden="true">
+          <use xlink:href="#el-iconmi_ma"></use>
+        </svg>
         <el-input prefix-icon="el-iconmi_ma iconfont"></el-input>
       </el-col>
     </el-row>
