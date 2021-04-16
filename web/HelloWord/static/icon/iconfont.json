@@ -1,0 +1,23 @@
+{
+  "id": "2492492",
+  "name": "helloword",
+  "font_family": "iconfont",
+  "css_prefix_text": "el-icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "21050560",
+      "name": "user",
+      "font_class": "zhanghao",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "21050542",
+      "name": "password",
+      "font_class": "mi_ma",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    }
+  ]
+}

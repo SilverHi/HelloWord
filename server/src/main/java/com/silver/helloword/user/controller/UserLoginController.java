@@ -6,6 +6,7 @@ import com.silver.helloword.user.entity.Userinfo;
 import com.silver.helloword.user.service.IUserinfoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +27,7 @@ public class UserLoginController {
      */
     @Autowired
     private IUserinfoService userinfoService;
-    @RequestMapping("/login")
+    @PostMapping("/login")
     public Result login(){
         Userinfo userinfo = userinfoService.getBaseMapper().selectById(1);
         count++;
@@ -34,7 +35,7 @@ public class UserLoginController {
         return ResultUtil.success(userinfo);
     }
     //http://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=ja&tl=zh_CN&q=calculate
-    @RequestMapping("/login2")
+    @RequestMapping("/checkUser")
     public Result login2(){
         Userinfo userinfo = userinfoService.getBaseMapper().selectById(1);
         count2++;
