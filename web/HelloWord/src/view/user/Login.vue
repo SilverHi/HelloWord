@@ -54,11 +54,14 @@ export default {
       login({username: this.username, password: this.password}).then(res => {
         if (res.code === 200) {
           console.log(res)
+          this.$store.commit('setToken', res.data.token)
+          this.$store.commit('setUser', res.data.user)
           this.$message({
             message: '登录成功啦~',
             center: true,
             type: 'success'
           })
+          this.$router.push('/')
         } else {
           this.$message({
             message: res.message,

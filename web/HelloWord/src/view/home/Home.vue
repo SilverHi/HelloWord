@@ -1,5 +1,5 @@
 <template>
-  <div>首页</div>
+  <div>你好 欢迎{{user.nickName}}</div>
 </template>
 
 <script>
@@ -10,14 +10,14 @@ export default {
   name: 'home',
   data () {
     return {
-      user: {}
+      user: this.$store.state.user
     }
   },
   created () {
-    checkUser()
   },
   mounted () {
     // console.log(this.$store.state.token)
+    checkUser()
   }
 }
 </script>

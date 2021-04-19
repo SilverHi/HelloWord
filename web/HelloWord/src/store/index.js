@@ -8,17 +8,22 @@ export default new Vuex.Store({
 
   state: {
     // 这里放全局参数
-    token: '12345678'
+    token: '',
+    user: []
   },
   mutations: {
     // 这里是set方法
-    setToken (state, demoValue) {
-      state.token = demoValue
+    setToken (state, token) {
+      state.token = token
+    },
+    setUser (state, user) {
+      state.user = user
     }
   },
   getters: {
     // get方法
-    getToken: state => state.token
+    getToken: state => state.token,
+    getUser: state => state.user
   },
 
   actions: {

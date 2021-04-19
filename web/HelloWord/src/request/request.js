@@ -7,7 +7,7 @@ let instance = axios.create({
   headers: {'content-type': 'application/x-www-form-urlencoded', 'Authorization': Cookies.get('Authorization')}
 })
 
-instance.defaults.baseURL = ''
+instance.defaults.baseURL = '/api'
 instance.defaults.withCredentials = true
 
 // 添加请求拦截器
