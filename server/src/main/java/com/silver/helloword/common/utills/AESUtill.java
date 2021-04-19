@@ -35,7 +35,9 @@ public class AESUtill {
     public static String encrypt(String content) {
         try {
             KeyGenerator kgen = KeyGenerator.getInstance("AES");
-            kgen.init(128, new SecureRandom(password.getBytes()));
+            SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+            random.setSeed(password.getBytes());
+            kgen.init(128, random);
             SecretKey secretKey = kgen.generateKey();
             byte[] enCodeFormat = secretKey.getEncoded();
             SecretKeySpec key = new SecretKeySpec(enCodeFormat, "AES");
@@ -56,6 +58,8 @@ public class AESUtill {
             e.printStackTrace();
         } catch (BadPaddingException e) {
             e.printStackTrace();
+        } catch (Exception e){
+            e.printStackTrace();
         }
         return null;
     }
@@ -67,7 +71,9 @@ public class AESUtill {
         try {
             byte[] content_byte = parseHexStr2Byte(content);
             KeyGenerator kgen = KeyGenerator.getInstance("AES");
-            kgen.init(128, new SecureRandom(password.getBytes()));
+            SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
+            random.setSeed(password.getBytes());
+            kgen.init(128, random);
             SecretKey secretKey = kgen.generateKey();
             byte[] enCodeFormat = secretKey.getEncoded();
             SecretKeySpec key = new SecretKeySpec(enCodeFormat, "AES");
@@ -84,6 +90,8 @@ public class AESUtill {
         } catch (IllegalBlockSizeException e) {
             e.printStackTrace();
         } catch (BadPaddingException e) {
+            e.printStackTrace();
+        } catch (Exception e){
             e.printStackTrace();
         }
         return null;
@@ -130,7 +138,7 @@ public class AESUtill {
          System.out.println("加密前：" + content);
          String aa = encrypt(content);
          System.out.println("加密前11：" + aa);
-         String bb = decrypt(aa);
+         String bb = decrypt("02331722BEE18FA1C0601DBFACE0A2DC8F2E71C17CAF7FC0C15DB0F20E89881EBBB3F928B5781DBA1466176A310E269502906A3D301122E4A99859E2A38DE5D7");
          System.out.println("解密后：" + new String(bb));
 
      }

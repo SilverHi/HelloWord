@@ -9,6 +9,7 @@ import com.silver.helloword.common.service.ISessionService;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
@@ -62,11 +63,11 @@ public class TokenUtill {
                 queryWrapper.lambda().eq(Session::getUsername,token.getUsername());
                 Session session = baseMapper.selectOne(queryWrapper);
                 if (session!=null){
-                    LocalDate startDate = LocalDate.parse(session.getTime(), formatter);
-                    LocalDate endDate = LocalDate.now();
-                    long between = ChronoUnit.MILLENNIA.between(startDate, endDate);
-                    if (between<= 30*60*1000) {
-                        session.setTime(formatter.format(LocalDate.now()));
+                    LocalDateTime startDate = LocalDateTime.parse(session.getTime(), formatter);
+                    LocalDateTime endDate = LocalDateTime.now();
+                    long between = ChronoUnit.SECONDS.between(startDate, endDate);
+                    if (between<= 30*60) {
+                        session.setTime(formatter.format(LocalDateTime.now()));
                         baseMapper.updateById(session);
                         //todo 更新session表
                         return true;

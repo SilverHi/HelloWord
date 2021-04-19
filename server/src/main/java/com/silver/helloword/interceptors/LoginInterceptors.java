@@ -25,7 +25,11 @@ public class LoginInterceptors implements HandlerInterceptor {
 //        System.out.println("执行了TestInterceptor的preHandle方法");
 
         String token = request.getHeader("token");
-        return TokenUtill.checkToken(token);
+        Boolean flag = TokenUtill.checkToken(token);
+        if (!flag) {
+            response.setStatus(403);
+        }
+        return flag;
     }
 
     /**

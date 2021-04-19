@@ -53,9 +53,6 @@ public class UserLoginController {
     //http://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=ja&tl=zh_CN&q=calculate
     @RequestMapping("/checkUser")
     public Result login2(){
-        Userinfo userinfo = userinfoService.getBaseMapper().selectById(1);
-        count2++;
-        System.out.println(count2);
-        return ResultUtil.success(userinfo);
+        return ResultUtil.success();
     }
 }
