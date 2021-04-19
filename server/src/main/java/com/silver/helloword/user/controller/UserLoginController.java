@@ -1,14 +1,20 @@
 package com.silver.helloword.user.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.silver.helloword.common.entity.Result;
 import com.silver.helloword.common.utills.ResultUtil;
+import com.silver.helloword.common.utills.TokenUtill;
 import com.silver.helloword.user.entity.Userinfo;
 import com.silver.helloword.user.service.IUserinfoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @ClassName UserLoginController
@@ -28,11 +34,21 @@ public class UserLoginController {
     @Autowired
     private IUserinfoService userinfoService;
     @PostMapping("/login")
-    public Result login(){
-        Userinfo userinfo = userinfoService.getBaseMapper().selectById(1);
-        count++;
-        System.out.println(count);
-        return ResultUtil.success(userinfo);
+    public Result login(@RequestParam("username") String username,@RequestParam("password") String password){
+        System.out.println(username+password);
+        QueryWrapper<Userinfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(Userinfo::getUsername,username);
+        Userinfo userinfo = userinfoService.getBaseMapper().selectOne(queryWrapper);
+        if (userinfo!=null){
+            if (userinfo.getPassword().equals(password)) {
+                userinfo.setPassword("");
+                Map map = new HashMap();
+                map.put("user",userinfo);
+                map.put("token", TokenUtill.createToken(userinfo.getUsername()));
+                return ResultUtil.success(map);
+            }
+        }
+        return ResultUtil.error("这个账号密码不对哦~");
     }
     //http://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=ja&tl=zh_CN&q=calculate
     @RequestMapping("/checkUser")

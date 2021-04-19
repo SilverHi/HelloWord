@@ -8,7 +8,7 @@ export default new Vuex.Store({
 
   state: {
     // 这里放全局参数
-    token: '1234567'
+    token: '12345678'
   },
   mutations: {
     // 这里是set方法

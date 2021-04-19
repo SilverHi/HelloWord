@@ -9,5 +9,5 @@ package com.silver.helloword.common.entity;
  **/
 
 public class BaseEntity {
-    private String id;
+    private Long id;
 }

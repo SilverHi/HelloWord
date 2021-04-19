@@ -1,5 +1,7 @@
 package com.silver.helloword.interceptors;
 
+import com.silver.helloword.common.utills.TokenUtill;
+
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,13 +25,7 @@ public class LoginInterceptors implements HandlerInterceptor {
 //        System.out.println("执行了TestInterceptor的preHandle方法");
 
         String token = request.getHeader("token");
-        if ("12345678".equals(token)) {
-            //如果设置为true时，请求将会继续执行后面的操作
-            return true;
-        }else {
-            response.setStatus(403);
-            return false;//如果设置为false时，被请求时，拦截器执行到此处将不会继续操作
-        }
+        return TokenUtill.checkToken(token);
     }
 
     /**

@@ -4,7 +4,7 @@ import store from '../store/index'
 import router from '../router/index'
 
 let instance = axios.create({
-  headers: {'content-type': 'application/json', 'Authorization': Cookies.get('Authorization')}
+  headers: {'content-type': 'application/x-www-form-urlencoded', 'Authorization': Cookies.get('Authorization')}
 })
 
 instance.defaults.baseURL = ''
