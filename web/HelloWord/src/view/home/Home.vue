@@ -1,5 +1,11 @@
 <template>
-  <div>你好 欢迎{{user.nickName}}</div>
+  <div class = "s-container">
+    <el-row class = "s-header">快乐背单词</el-row>
+    <el-row class = "s-main">
+      <el-button type="primary" @click="handwrittenWords" round class="submitBtn">手抄单词</el-button>
+    </el-row>
+    <el-row class = "s-footer">111</el-row>
+  </div>
 </template>
 
 <script>
@@ -16,8 +22,12 @@ export default {
   created () {
   },
   mounted () {
-    // console.log(this.$store.state.token)
     checkUser()
+  },
+  methods: {
+    handwrittenWords () {
+      this.$router.push('/word/written')
+    }
   }
 }
 </script>

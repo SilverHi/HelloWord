@@ -50,7 +50,6 @@ public class UserLoginController {
         }
         return ResultUtil.error("这个账号密码不对哦~");
     }
-    //http://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=ja&tl=zh_CN&q=calculate
     @RequestMapping("/checkUser")
     public Result login2(){
         return ResultUtil.success();

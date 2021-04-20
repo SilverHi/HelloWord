@@ -95,7 +95,4 @@ export default {
   margin-top: 20px;
   width: 100%;
 }
-body{
-  background-image: url("../../../static/image/back.jpg");
-}
 </style>
