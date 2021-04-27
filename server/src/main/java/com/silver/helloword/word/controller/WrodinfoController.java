@@ -29,7 +29,8 @@ public class WrodinfoController {
     @PostMapping("/translation")
     public Result translation (@RequestParam("type") String type,@RequestParam("word") String word) {
         //
-        String url = "http://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=zh_CN&tl=ja&q=计算";
+        String url = "http://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=zh_CN&tl=ja&q=你好";
+//        String url = "https://www.dancihu.com/search/m/jp/?q=计算y=0";
         try {
             String translation = HttpUtil.doGet(url, "translation");
             System.out.println(translation);
